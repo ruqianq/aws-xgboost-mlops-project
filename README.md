@@ -42,14 +42,15 @@ This project I break it down into different compounent, the services are all dep
 1. AWS Account
 You need an AWS account with sufficient permissions to create and manage resources such as S3 buckets, Lambda functions, and SageMaker instances.
 
-2.AWS CLI
+2. AWS CLI
 Install and configure the AWS Command Line Interface (CLI) to interact with AWS services.
 [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 Configure AWS CLI with your credentials
 ```
 aws configure
 ```
-3.Python and Pipenv
+
+3. Python and Pipenv
 Ensure you have at least 3.10 python installed and latest pipenv
 
 4. Docker
@@ -60,12 +61,14 @@ Install Docker to build and deploy containerized applications.
 ```
 git clone https://github.com/ruqianq/aws-xgboost-mlops-project
 ```
+
 2. Install Required Packages and activate the virtual environment
 Install required package through pipenv
 ```
 pipenv install
 pipenv shell
 ```
+
 3. Set Up Environment
 ```
 export AWS_ACCESS_KEY_ID = [YOUR AWS ACCESS KEY ID]
@@ -75,18 +78,18 @@ export AWS_REGION=[YOUR AWS REGION]
 
 ## Usage
 1. Deploying MLflow Server as experiment tracking in AWS
-    a. Navigate to the MLflow Directory
+    i. Navigate to the MLflow Directory
     ```
     cd experiment-tracking
     ```
-    b. Deploy MLflow using AWS CDK
+    ii. Deploy MLflow using AWS CDK
     ```
     ACCOUNT_ID=$(aws sts get-caller-identity --query Account | tr -d '"')
     AWS_REGION=$(aws configure get region)
     cdk bootstrap aws://${ACCOUNT_ID}/${AWS_REGION}
     cdk deploy --parameters ProjectName=mlflow --require-approval never
     ```
-    c. Then you can navigate to your CloudFormation output and get the URL of your remote MLflow server
+    iii. Then you can navigate to your CloudFormation output and get the URL of your remote MLflow server
     ```
     import mlflow
     mlflow.set_tracking_uri('<YOUR LOAD BALANCER URI>')
@@ -95,24 +98,28 @@ export AWS_REGION=[YOUR AWS REGION]
     ![](./images/mlflow.png)
 
 2. Training and register model in SageMaker
-    a. Open SageMaker Studio in AWS and Create a domain
-    b. Navigate to notebooks
+    i. Open SageMaker Studio in AWS and Create a domain
+    ii. Navigate to notebooks
     ```
     cd notebooks
     ```
-    c. Upload notebooks and run all the blocks and in the end you should be able to register the model and see the model artifest save under S3 bucket:
+    iii. Upload notebooks and run all the blocks and in the end you should be able to register the model and see the model artifest save under S3 bucket:
     ![image info](./images/model_register.png)
     ![image info](./images/s3.png)
 
 3. Training and register model in Mage
-    a. Navigate to orchestration
+    i. Navigate to orchestration
     ```
     cd orchestration
     ```
-    b. Run the docker compose
+    ii. Run the docker compose
     ```
     docker-compose up
     ```
-    c. Navigate to [localhost](http://localhost:6789/)
-    b. Run the pipeline:
+    iii. Navigate to [localhost](http://localhost:6789/)
+    iiii. Run the pipeline:
     ![](./images/mage.png)
+
+ ## Future Enhancement 
+ - [ ] Model Monitoring
+ - [ ] CD release pipeline
