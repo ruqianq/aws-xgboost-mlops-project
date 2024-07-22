@@ -1,0 +1,145 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - feature_engineering
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: customer-satifaction-rating-importer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: customer_satifaction_rating_importer
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/feature_engineering.py
+    file_source:
+      path: transformers/feature_engineering.py
+  downstream_blocks:
+  - encoder
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: feature_engineering
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - customer_satifaction_rating_importer
+  uuid: feature_engineering
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - scaler
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: encoder
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - feature_engineering
+  uuid: encoder
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - train_test_split
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: scaler
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - encoder
+  uuid: scaler
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - customer_rating_rf_trainning
+  - customer_rating_xgb_training
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: train_test_split
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - scaler
+  uuid: train_test_split
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: customer_rating_rf_trainning
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - train_test_split
+  uuid: customer_rating_rf_trainning
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: customer_rating_xgb_training
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - train_test_split
+  uuid: customer_rating_xgb_training
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-07-11 18:16:52.996621+00:00'
+data_integration: null
+description: ''
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: customer-satisfaction-rating-ml
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: customer_satisfaction_rating_ml
+variables_dir: /home/src/mage_data/default_repo
+widgets: []

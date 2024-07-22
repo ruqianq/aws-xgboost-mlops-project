@@ -1,0 +1,3 @@
+CustomerID,Age,Gender,Income,VisitFrequency,AverageSpend,PreferredCuisine,TimeOfVisit,GroupSize,DiningOccasion,MealType,OnlineReservation,DeliveryOrder,LoyaltyProgramMember,WaitTime,ServiceRating,FoodRating,AmbianceRating,HighSatisfaction
+900,35,1,83380,Weekly,27.829142002481408,Chinese,Breakfast,3,Business,1,0,1,1,43.52392853444247,2,5,4,0
+901,19,1,43623,Rarely,115.4086222968233,American,Dinner,1,Casual,2,0,0,0,57.524294460377256,5,5,3,1

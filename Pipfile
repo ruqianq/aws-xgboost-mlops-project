@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pre-commit = "*"
+mlflow = "*"
+pandas = "*"
+notebook = "*"
+aws-cdk-lib = "*"
+constructs = "*"
+sagemaker = "*"
+xgboost = "*"
+hyperopt = "*"
+flask = "*"
+awsgi = "*"
+"aws-cdk.aws-lambda-python-alpha" = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
