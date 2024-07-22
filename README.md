@@ -78,18 +78,18 @@ export AWS_REGION=[YOUR AWS REGION]
 
 ## Usage
 1. Deploying MLflow Server as experiment tracking in AWS
-    i. Navigate to the MLflow Directory
+    1. Navigate to the MLflow Directory
     ```
     cd experiment-tracking
     ```
-    ii. Deploy MLflow using AWS CDK
+    2. Deploy MLflow using AWS CDK
     ```
     ACCOUNT_ID=$(aws sts get-caller-identity --query Account | tr -d '"')
     AWS_REGION=$(aws configure get region)
     cdk bootstrap aws://${ACCOUNT_ID}/${AWS_REGION}
     cdk deploy --parameters ProjectName=mlflow --require-approval never
     ```
-    iii. Then you can navigate to your CloudFormation output and get the URL of your remote MLflow server
+    3. Then you can navigate to your CloudFormation output and get the URL of your remote MLflow server
     ```
     import mlflow
     mlflow.set_tracking_uri('<YOUR LOAD BALANCER URI>')
@@ -98,26 +98,26 @@ export AWS_REGION=[YOUR AWS REGION]
     ![](./images/mlflow.png)
 
 2. Training and register model in SageMaker
-    i. Open SageMaker Studio in AWS and Create a domain
-    ii. Navigate to notebooks
+    1. Open SageMaker Studio in AWS and Create a domain
+    2. Navigate to notebooks
     ```
     cd notebooks
     ```
-    iii. Upload notebooks and run all the blocks and in the end you should be able to register the model and see the model artifest save under S3 bucket:
+    3. Upload notebooks and run all the blocks and in the end you should be able to register the model and see the model artifest save under S3 bucket:
     ![image info](./images/model_register.png)
     ![image info](./images/s3.png)
 
 3. Training and register model in Mage
-    i. Navigate to orchestration
+    1. Navigate to orchestration
     ```
     cd orchestration
     ```
-    ii. Run the docker compose
+    2. Run the docker compose
     ```
     docker-compose up
     ```
-    iii. Navigate to [localhost](http://localhost:6789/)
-    iiii. Run the pipeline:
+    3. Navigate to [localhost](http://localhost:6789/)
+    4. Run the pipeline:
     ![](./images/mage.png)
 
  ## Future Enhancement 
