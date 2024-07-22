@@ -34,6 +34,7 @@ This project I break it down into different compounent, the services are all dep
 3. Hyperparameter tuning XGBoost model and register the best parameter in MLflow
 4. Productionize the training pipeline in Mage to orchestrate the flow
 5. Deploy model through CDK as a Lambda function
+6. CI enabled through GitHub Action
 
 ![image info](./images/mlops.drawio.png)
 
