@@ -123,3 +123,4 @@ export AWS_REGION=[YOUR AWS REGION]
  ## Future Enhancement 
  - [ ] Model Monitoring
  - [ ] CD release pipeline
+ - [ ] AWS Flink for real time ML inference
